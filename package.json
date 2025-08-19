@@ -12,7 +12,13 @@
     "test:bun": "bun test",
     "test:api": "bun test tests/api.test.ts",
     "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix"
+    "lint:fix": "eslint src --ext .ts,.tsx --fix",
+    "pocketbase:setup": "tsx src/scripts/setupPocketBaseAdmin.ts",
+    "pocketbase:init": "tsx src/scripts/initPocketBase.ts",
+    "pocketbase:test": "tsx src/scripts/testPocketBase.ts",
+    "pocketbase:test-basic": "tsx src/scripts/testPocketBaseBasic.ts",
+    "pocketbase:up": "docker-compose up -d",
+    "pocketbase:down": "docker-compose down"
   },
   "keywords": [
     "hono",
@@ -28,6 +34,8 @@
     "hono": "^4.0.0",
     "jpush-sdk": "^3.3.7",
     "moment": "^2.29.4",
+    "node-fetch": "^2.7.0",
+    "pocketbase": "^0.26.2",
     "qiniu": "^7.7.0",
     "qr-image": "^3.2.0",
     "utf8": "^3.0.0",
@@ -37,6 +45,7 @@
     "@types/bcrypt": "^5.0.2",
     "@types/better-sqlite3": "^7.6.8",
     "@types/node": "^20.10.5",
+    "@types/node-fetch": "^2.6.13",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitest/ui": "^1.1.0",

@@ -1,0 +1,409 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "type": "base",
+      "system": false,
+      "schema": [
+        {
+          "name": "userId",
+          "type": "number",
+          "required": true,
+          "unique": true
+        },
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "max": 100
+        },
+        {
+          "name": "email",
+          "type": "email",
+          "required": false
+        },
+        {
+          "name": "phone",
+          "type": "text",
+          "required": true,
+          "unique": true,
+          "max": 20
+        },
+        {
+          "name": "digit",
+          "type": "text",
+          "required": true,
+          "max": 50
+        },
+        {
+          "name": "password",
+          "type": "text",
+          "required": true,
+          "max": 255
+        },
+        {
+          "name": "paypassword",
+          "type": "text",
+          "required": false,
+          "max": 255
+        },
+        {
+          "name": "avatar",
+          "type": "url",
+          "required": false
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "required": false,
+          "max": 10
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": true,
+          "options": ["allow", "deny"]
+        },
+        {
+          "name": "online",
+          "type": "bool",
+          "required": true
+        },
+        {
+          "name": "reported",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "role",
+          "type": "select",
+          "required": true,
+          "options": ["normal", "advance", "admin"]
+        },
+        {
+          "name": "gender",
+          "type": "select",
+          "required": false,
+          "options": ["男", "女", "保密"]
+        },
+        {
+          "name": "age",
+          "type": "number",
+          "required": false,
+          "min": 1,
+          "max": 120
+        },
+        {
+          "name": "level",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "memo",
+          "type": "text",
+          "required": false,
+          "max": 1000
+        },
+        {
+          "name": "points",
+          "type": "number",
+          "required": true,
+          "min": 0
+        },
+        {
+          "name": "goldpoints",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "totalearned",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "upline",
+          "type": "number",
+          "required": false
+        }
+      ]
+    },
+    {
+      "name": "stories",
+      "type": "base",
+      "system": false,
+      "schema": [
+        {
+          "name": "title",
+          "type": "text",
+          "required": true,
+          "max": 255
+        },
+        {
+          "name": "content",
+          "type": "editor",
+          "required": true
+        },
+        {
+          "name": "anonymous",
+          "type": "bool",
+          "required": false
+        },
+        {
+          "name": "language",
+          "type": "text",
+          "required": false,
+          "max": 10
+        },
+        {
+          "name": "ups",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "downs",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "favos",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "views",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "reported",
+          "type": "number",
+          "required": false,
+          "min": 0
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": true,
+          "options": ["allow", "deny"]
+        },
+        {
+          "name": "owner",
+          "type": "relation",
+          "required": true,
+          "collectionId": "users",
+          "cascadeDelete": true
+        }
+      ]
+    },
+    {
+      "name": "transactions",
+      "type": "base",
+      "system": false,
+      "schema": [
+        {
+          "name": "sn",
+          "type": "text",
+          "required": true,
+          "unique": true,
+          "max": 50
+        },
+        {
+          "name": "fromUser",
+          "type": "relation",
+          "required": true,
+          "collectionId": "users"
+        },
+        {
+          "name": "toUser",
+          "type": "relation",
+          "required": true,
+          "collectionId": "users"
+        },
+        {
+          "name": "serial",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "point",
+          "type": "number",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": true,
+          "options": ["pending", "password", "fail", "success", "refuse"]
+        }
+      ]
+    },
+    {
+      "name": "pay_serials",
+      "type": "base",
+      "system": false,
+      "schema": [
+        {
+          "name": "sn",
+          "type": "text",
+          "required": true,
+          "unique": true,
+          "max": 50
+        },
+        {
+          "name": "password",
+          "type": "text",
+          "required": true,
+          "max": 255
+        },
+        {
+          "name": "point",
+          "type": "number",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "expired",
+          "type": "date",
+          "required": true
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": true,
+          "options": ["active", "used", "expired"]
+        },
+        {
+          "name": "user",
+          "type": "relation",
+          "required": true,
+          "collectionId": "users",
+          "cascadeDelete": true
+        }
+      ]
+    },
+    {
+      "name": "pointraks",
+      "type": "base",
+      "system": false,
+      "schema": [
+        {
+          "name": "sn",
+          "type": "text",
+          "required": true,
+          "unique": true,
+          "max": 50
+        },
+        {
+          "name": "points",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "owner",
+          "type": "relation",
+          "required": true,
+          "collectionId": "users",
+          "cascadeDelete": true
+        },
+        {
+          "name": "detail",
+          "type": "text",
+          "required": false,
+          "max": 500
+        },
+        {
+          "name": "channel",
+          "type": "select",
+          "required": true,
+          "options": [
+            "just_reward",
+            "outer_banner_show", "outer_banner_click",
+            "outer_screen_show", "outer_screen_click", "outer_screen_click_video",
+            "outer_rewardvideo_show", "outer_rewardvideo_click",
+            "inner_txt_show", "inner_txt_click",
+            "inner_img_show", "inner_img_click",
+            "inner_video_show", "inner_video_click",
+            "game_play", "game_defeat", "game_victory",
+            "shopping", "promotion", "envelop"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cashouts",
+      "type": "base",
+      "system": false,
+      "schema": [
+        {
+          "name": "user",
+          "type": "relation",
+          "required": true,
+          "collectionId": "users",
+          "cascadeDelete": true
+        },
+        {
+          "name": "points",
+          "type": "number",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "amount",
+          "type": "number",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "rate",
+          "type": "number",
+          "required": true,
+          "min": 1
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": true,
+          "options": ["pending", "processing", "completed", "rejected"]
+        },
+        {
+          "name": "method",
+          "type": "select",
+          "required": true,
+          "options": ["alipay", "wechat", "bank"]
+        },
+        {
+          "name": "account",
+          "type": "text",
+          "required": true,
+          "max": 255
+        },
+        {
+          "name": "note",
+          "type": "text",
+          "required": false,
+          "max": 500
+        },
+        {
+          "name": "admin_note",
+          "type": "text",
+          "required": false,
+          "max": 500
+        },
+        {
+          "name": "processed_at",
+          "type": "date",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

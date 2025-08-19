@@ -9,6 +9,13 @@ export const APP_CONFIG = {
     type: process.env.DB_TYPE || 'sqlite' // sqlite | pocketbase
   },
 
+  // PocketBase配置
+  pocketbase: {
+    url: process.env.POCKETBASE_URL || 'http://127.0.0.1:8090',
+    adminEmail: process.env.POCKETBASE_ADMIN_EMAIL || 'admin@example.com',
+    adminPassword: process.env.POCKETBASE_ADMIN_PASSWORD || 'admin_password'
+  },
+
   // 服务配置
   services: {
     // 七牛云配置

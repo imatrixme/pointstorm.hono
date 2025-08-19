@@ -14,8 +14,8 @@ import { SqlitePaySerialRepository } from '@/repositories/sqlite/PaySerialReposi
 import { SqlitePointrakRepository } from '@/repositories/sqlite/PointrakRepository'
 import { SqliteCashoutRepository } from '@/repositories/sqlite/CashoutRepository'
 
-// PocketBase implementations (future)
-// import { PocketBaseUserRepository } from '@/repositories/pocketbase/UserRepository'
+// PocketBase implementations
+import { PocketBaseUserRepository } from '@/repositories/pocketbase/UserRepository'
 
 type RepositoryType = 'sqlite' | 'pocketbase'
 
@@ -41,8 +41,7 @@ class RepositoryFactory {
         case 'sqlite':
           return new SqliteUserRepository()
         case 'pocketbase':
-          // return new PocketBaseUserRepository()
-          throw new Error('PocketBase UserRepository not implemented yet')
+          return new PocketBaseUserRepository()
         default:
           throw new Error(`Unknown repository type: ${this.repositoryType}`)
       }
